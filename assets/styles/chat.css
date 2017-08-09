@@ -1,0 +1,12 @@
+body {
+ font-family: 'Varela Round',"Noto Sans Japanese","游ゴシック",YuGothic,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Verdana,"メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif  !important;
+ color: #545454 !important;
+}
+
+ul > li:first-child {
+	color: black;
+	font-size: 25px;
+}
+ul > li:nth-child(2n) {
+	color: blue;
+}
