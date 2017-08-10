@@ -65,14 +65,13 @@ $(function(){
 		BAAS.cocoa.init();
 });
 
-var content = document.getElementById('jsi-msg');
-
 function voice_operation() {
 	var speech = new webkitSpeechRecognition();
 	speech.lang = "ja";
 
 	speech.addEventListener( 'result' , function( e ) {
 		var text = e.results[0][0].transcript.replace(/\s+/g, "");
+		var content = document.getElementById('jsi-msg');
 
 		if (content.textContent == null || content.textContent.length == 0) {
 			content.textContent = text;
