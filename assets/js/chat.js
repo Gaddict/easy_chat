@@ -87,7 +87,7 @@ function voice_operation() {
 		voice_operation();
 	};
 
-	recognition.onerror = function() {
+	speech.onerror = function() {
 		voice_operation();
 	};
 
