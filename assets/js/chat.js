@@ -65,22 +65,36 @@ $(function(){
 		BAAS.cocoa.init();
 });
 
-var speech = new webkitSpeechRecognition();
 var content = document.getElementById('jsi-msg');
-//言語を日本語に設定
-speech.lang = "ja";
-window.onload = function(){
-	// 音声認識をスタート
+
+function voice_operation() {
+	var speech = new webkitSpeechRecognition();
+	speech.lang = "ja";
+
+	speech.addEventListener( 'result' , function( e ) {
+		var text = e.results[0][0].transcript.replace(/\s+/g, "");
+
+		if (content.textContent == '') {
+			content.textContent = text;
+		} else if (text == 'OK') {
+			document.getElementById('jsi-button').click();
+		}
+
+		voice_operation();
+	} );
+
+	speech.onnomatch = function() {
+		voice_operation();
+	};
+
+	recognition.onerror = function() {
+		voice_operation();
+	};
+
 	speech.start();
 }
-speech.addEventListener( 'result' , function( e ) {
-	var text = e.results[0][0].transcript.replace(/\s+/g, "");
 
-	if (content.textContent == '') {
-		content.textContent = text;
-		speech.start();
-		return;
-	} else if (text == 'OK') {
-		document.getElementById('jsi-button').click();
-	}
-} );
+window.onload = function(){
+	// 音声認識をスタート
+	voice_operation();
+}
