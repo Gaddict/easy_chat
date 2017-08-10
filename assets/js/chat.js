@@ -76,7 +76,7 @@ function voice_operation() {
 
 		if (content.textContent == '') {
 			content.textContent = text;
-		} else if (text == 'OK') {
+		} else if (text == 'いいよ' || text == 'ok' || text == 'よし') {
 			document.getElementById('jsi-button').click();
 		}
 
