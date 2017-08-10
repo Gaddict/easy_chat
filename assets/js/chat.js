@@ -75,8 +75,11 @@ window.onload = function(){
 }
 speech.addEventListener( 'result' , function( e ) {
 	var text = e.results[0][0].transcript.replace(/\s+/g, "");
-	alert(text);
 
-	content.textContent = text;
-	document.getElementById('jsi-button').click();
+	if (content.textContent == '') {
+		content.textContent = text;
+		return;
+	} else if (text == 'OK') {
+		document.getElementById('jsi-button').click();
+	}
 } );
