@@ -73,6 +73,8 @@ function voice_operation() {
 		var text = e.results[0][0].transcript.replace(/\s+/g, "");
 		var content = document.getElementById('jsi-msg');
 
+		alert('内容: ' + content.textContent + ', length: ' + content.textContent.length);
+		
 		if (content.textContent == null || content.textContent.length == 0) {
 			content.textContent = text;
 		} else if (text == 'いいよ' || text == 'ok' || text == 'よし') {
