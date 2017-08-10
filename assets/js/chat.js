@@ -25,8 +25,7 @@ BAAS.cocoa = {
 
 			//pushを監視
 			this.chatDataStore.on('push',function(data){
-					self.addText(data.value.user);
-					self.addText(data.value.message);
+					self.addText(data.value);
 			});
 		},
 
@@ -44,9 +43,21 @@ BAAS.cocoa = {
 
 		//受け取り後の処理
 		addText:function(json){
-				var msgDom = $('<li>');
-				msgDom.html(json);
-				this.$board.append(msgDom[0]);
+			var usrDom = $('<li>');
+
+			//他人のつぶやきは左吹き出し
+			if (json.user != this.$name.val()) {
+				msgDom = $('<li class="left_arrow_box">');
+			} else {
+				msgDom = $('<li class="right_arrow_box">');
+			}
+
+			usrDom.html(json.user);
+			msgDom.html(json.message)
+			this.$board.append(usrDom[0]);
+			this.$board.append(msgDom[0]);
+
+			scrollBy(0, 150);
 		}
 }
 

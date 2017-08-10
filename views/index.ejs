@@ -11,10 +11,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- milkcocoa読み込み -->
     <script src="https://cdn.mlkcca.com/v0.6.0/milkcocoa.js"></script>
+    <script>
+      var speech = new webkitSpeechRecognition();
+      var content = document.getElementById('jsi-msg');
+      //言語を日本語に設定
+      speech.lang = "ja";
+      window.onload = function(){
+          // 音声認識をスタート
+          speech.start();
+      }
+      speech.addEventListener( 'result' , function( e ) {
+          var text = e.results[0][0].transcript.replace(/\s+/g, "");
+          content.textContent = text;
+          document.getElementById('jsi-button').click();
+      } );
+    </script>
     </head>
   <body>
 
 	<div>
+    <!-- チャット内容が動的に生成される部分 -->
+    <ul id="jsi-board" style="list-style:none;padding-right: 40px;margin-right: 100px;margin-left: 100px;" >
+      <li>〜チャット内容〜</li>
+    </ul>
+
 		<!-- 投稿者 -->
 		<div>
 			<p>ユーザ名</p>
@@ -30,10 +50,5 @@
 
 	<!-- メッセージを送る部分 -->
 	<button name="button" id="jsi-button" class="btn btn-default">send message!</button>
-
-	<!-- チャット内容が動的に生成される部分 -->
-	<ul id="jsi-board" style="list-style:none;">
-		<li>〜チャット内容〜</li>
-	</ul>
   </body>
 </html>
