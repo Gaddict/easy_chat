@@ -74,8 +74,9 @@ function voice_operation() {
 		var content = document.getElementById('jsi-msg');
 
 		alert('内容: ' + content.textContent + ', length: ' + content.textContent.length);
-		
+
 		if (content.textContent == null || content.textContent.length == 0) {
+			alert(text + ' を入力');
 			content.textContent = text;
 		} else if (text == 'いいよ' || text == 'ok' || text == 'よし') {
 			document.getElementById('jsi-button').click();
