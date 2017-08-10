@@ -78,6 +78,7 @@ speech.addEventListener( 'result' , function( e ) {
 
 	if (content.textContent == '') {
 		content.textContent = text;
+		speech.start();
 		return;
 	} else if (text == 'OK') {
 		document.getElementById('jsi-button').click();
