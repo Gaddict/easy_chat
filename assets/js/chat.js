@@ -73,9 +73,8 @@ function voice_operation() {
 
 	speech.addEventListener( 'result' , function( e ) {
 		var text = e.results[0][0].transcript.replace(/\s+/g, "");
-		alert(content.textContent);
 
-		if (content.textContent == '' || content.textContent == undefined) {
+		if (content.textContent == null || content.textContent.length == 0) {
 			content.textContent = text;
 		} else if (text == 'いいよ' || text == 'ok' || text == 'よし') {
 			document.getElementById('jsi-button').click();
