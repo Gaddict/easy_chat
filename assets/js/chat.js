@@ -73,6 +73,7 @@ function voice_operation() {
 
 	speech.addEventListener( 'result' , function( e ) {
 		var text = e.results[0][0].transcript.replace(/\s+/g, "");
+		alert(content.textContent);
 
 		if (content.textContent == '' || content.textContent == undefined) {
 			content.textContent = text;
