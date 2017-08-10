@@ -74,10 +74,11 @@ function voice_operation() {
 	speech.addEventListener( 'result' , function( e ) {
 		var text = e.results[0][0].transcript.replace(/\s+/g, "");
 
-		if (content.textContent == '') {
+		if (content.textContent == '' || content.textContent == undefined) {
 			content.textContent = text;
 		} else if (text == 'いいよ' || text == 'ok' || text == 'よし') {
 			document.getElementById('jsi-button').click();
+			content.textContent = '';
 		}
 
 		voice_operation();
