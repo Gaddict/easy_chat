@@ -75,8 +75,10 @@ function voice_operation() {
 
 		if (content.value == null || content.value.length == 0) {
 			content.value = text;
-		} else if (text == 'いいよ' || text == 'ok' || text == 'よし') {
+		} else if (text == 'ok' || text == 'よし') {
 			document.getElementById('jsi-button').click();
+			content.value = '';
+		} else if (text == 'ダメ' || text == 'もう1回') {
 			content.value = '';
 		}
 
